@@ -14,42 +14,26 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-function cargar_media_uploader() {
+// INCLUDES
+include_once(plugin_dir_path(__FILE__).'includes/enqueues.php');
+include_once(plugin_dir_path(__FILE__).'includes/helpers.php');
+include_once(plugin_dir_path(__FILE__).'includes/functions.php');
 
-    // Solo cargar los scripts en la página de edición del post
-    if (get_current_screen()->base === 'post') {
-        // Cargar los scripts de media uploader
-        wp_enqueue_media();
-    }
+// PORTFOLIO
+include_once(plugin_dir_path(__FILE__).'admin/portfolio/post_type.php');
+include_once(plugin_dir_path(__FILE__).'admin/portfolio/taxonomies.php');
 
-}
-add_action('admin_enqueue_scripts', 'cargar_media_uploader');
+// NEWS
+include_once(plugin_dir_path(__FILE__).'admin/news/post_type.php');
+include_once(plugin_dir_path(__FILE__).'admin/news/taxonomies.php');
 
-// Post types
-include_once( plugin_dir_path( __FILE__ ) . 'includes/post-types/portafolio.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/post-types/noticia.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/post-types/loteria.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/post-types/documento.php');
+// LOTTERIES
+include_once(plugin_dir_path(__FILE__).'admin/lottery/menu.php');
+include_once(plugin_dir_path(__FILE__).'admin/lottery/post_type.php');
+include_once(plugin_dir_path(__FILE__).'admin/lottery/taxonomies.php');
+include_once(plugin_dir_path(__FILE__).'admin/lottery/meta_boxes.php');
 
-// Taxonomies
-include_once( plugin_dir_path( __FILE__ ) . 'includes/taxonomies/categoria_portafolio.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/taxonomies/categoria_noticias.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/taxonomies/caregoria_documentos.php');
-
-// Meta boxes
-include_once( plugin_dir_path( __FILE__ ) . 'includes/meta-boxes/documento-meta.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/meta-boxes/loteria-meta.php');
-
-// Rest api
-include_once( plugin_dir_path( __FILE__ ) . 'includes/api/rest-portafolio.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/api/rest-noticia.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/api/rest-loteria.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/api/rest-documento.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/api/rest-sorteos.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/api/rest-post.php');
-
-// Functions
-include_once( plugin_dir_path( __FILE__ ) . 'includes/functions/funciones-portafolio.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/functions/funciones-noticias.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/functions/funciones-loterias.php');
-include_once( plugin_dir_path( __FILE__ ) . 'includes/functions/funciones-documento.php');
+// DOCUMENTS
+include_once(plugin_dir_path(__FILE__).'admin/documents/post_type.php');
+include_once(plugin_dir_path(__FILE__).'admin/documents/taxonomies.php');
+include_once(plugin_dir_path(__FILE__).'admin/documents/meta_boxes.php');
